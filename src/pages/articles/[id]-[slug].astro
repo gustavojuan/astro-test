@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/layout.astro';
+export const getStaticPaths = (() => {
+  // Hard-coded article data for demo purposes
+  const articles = [
+    {
+      id: 1,
+      slug: 'learning-javascript',
+      title: 'Learning Javascript',
+      content:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate perferendis harum aliquid magnam maiores saepe debitis doloribus, velit dolor magni blanditiis aut doloremque maxime voluptatum obcaecati necessitatibus ipsum repellendus corporis.'
+    },
+    {
+      id: 2,
+      slug: 'the-basics-of-python',
+      title: 'The basics of Python',
+      content:
+        'Pytohn lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate perferendis harum aliquid magnam maiores saepe debitis doloribus, velit dolor magni blanditiis aut doloremque maxime voluptatum obcaecati necessitatibus ipsum repellendus corporis.'
+    }
+  ];
+
+  return articles.map((article) => ({
+    params: { id: article.id, slug: article.slug},
+    props: { article }
+  }));
+}) satisfies GetStaticPaths;
+
+const { id, slug } = Astro.params;
+const { article } = Astro.props;
+---
+
+<Layout pageTitle={article.title}>
+  <h1>{id} - {article.title} - {slug}</h1>
+  <p>{article.content}</p>
+</Layout>

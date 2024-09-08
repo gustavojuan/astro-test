@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/layout.astro';
+
+const articles = [
+  {
+    id: 1,
+    slug: 'learning-javascript',
+    title: 'Learning Javascript',
+    content:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate perferendis harum aliquid magnam maiores saepe debitis doloribus, velit dolor magni blanditiis aut doloremque maxime voluptatum obcaecati necessitatibus ipsum repellendus corporis.'
+  },
+  {
+    id: 2,
+    slug: 'the-basics-of-python',
+    title: 'The basics of Python',
+    content:
+      'Pytohn lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate perferendis harum aliquid magnam maiores saepe debitis doloribus, velit dolor magni blanditiis aut doloremque maxime voluptatum obcaecati necessitatibus ipsum repellendus corporis.'
+  }
+];
+---
+
+<Layout pageTitle="ARticles">
+  <h1>Articles</h1>
+
+  <section>
+    {
+      articles.map((article) => (
+        <article>
+          <a href={`/articles/${article.id}-${article.slug}`}>
+            {article.title}
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</Layout>
