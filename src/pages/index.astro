@@ -1,4 +1,5 @@
 ---
+import { ReactCounter } from '../components/ReactCounter';
 import UserPanel from '../components/UserPanel.astro';
 import Layout from '../layouts/layout.astro';
 
@@ -20,6 +21,8 @@ const currentUser = {
     userIsAdmin={currentUser.isAdmin}  
     adminPanelTitle="Name from parent"
   />
+
+  <ReactCounter client:visible><h3>asd</h3></ReactCounter>
 </Layout>
 
 
